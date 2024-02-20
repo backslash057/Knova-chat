@@ -1,0 +1,6 @@
+
+
+
+
+#paquets types
+REQUEST="request"

@@ -1,0 +1,102 @@
+[06:34:54] [INFO] Starting server
+[06:36:27] [INFO] Starting server
+[07:02:19] [INFO] Connecting MySQL database
+[07:02:19] [INFO] Starting server ar port 12345
+[07:02:50] [DEBUG] ('127.0.0.1', 49846) s'est connecté
+[07:03:39] [DEBUG] ('127.0.0.1', 49846) s'est déconnecté
+[07:06:08] [INFO] Connecting MySQL database
+[07:06:25] [INFO] Connecting MySQL database
+[07:06:25] [INFO] Starting server ar port 12345
+[07:06:50] [DEBUG] ('127.0.0.1', 49863) s'est connecté
+[07:08:34] [DEBUG] ('127.0.0.1', 49863) s'est déconnecté
+[07:09:53] [DEBUG] ('127.0.0.1', 49867) s'est connecté
+[07:09:55] [DEBUG] ('127.0.0.1', 49867) s'est déconnecté
+[07:11:47] [INFO] Stopping server
+[07:12:19] [INFO] Connecting MySQL database
+[07:12:19] [INFO] Starting server ar port 12345
+[07:12:24] [DEBUG] ('127.0.0.1', 49872) s'est connecté
+[07:12:27] [DEBUG] ('127.0.0.1', 49872) s'est déconnecté
+[07:12:30] [DEBUG] ('127.0.0.1', 49873) s'est connecté
+[07:12:32] [DEBUG] ('127.0.0.1', 49873) s'est déconnecté
+[07:17:24] [INFO] Stopping server
+[07:17:29] [INFO] Connecting MySQL database
+[07:17:29] [INFO] Starting server ar port 12345
+[07:17:38] [DEBUG] ('127.0.0.1', 49880) s'est connecté
+[07:18:59] [INFO] Stopping server
+[07:19:20] [DEBUG] ('127.0.0.1', 49880) s'est déconnecté
+[07:19:25] [INFO] Connecting MySQL database
+[07:19:25] [INFO] Starting server...
+[07:19:25] [INFO] Server started at port 12345
+[07:19:55] [INFO] Stopping server
+[07:19:58] [INFO] MySQL database connected
+[07:19:58] [INFO] Starting server...
+[07:19:58] [INFO] Server started at port 12345
+[07:20:02] [DEBUG] ('127.0.0.1', 49886) s'est connecté
+[07:20:05] [DEBUG] ('127.0.0.1', 49886) s'est déconnecté
+[07:20:08] [DEBUG] ('127.0.0.1', 49887) s'est connecté
+[07:20:12] [INFO] Stopping server
+[07:20:41] [DEBUG] ('127.0.0.1', 49887) s'est déconnecté
+[07:20:54] [INFO] MySQL database connected
+[07:20:54] [INFO] Starting server...
+[07:20:54] [INFO] Server started at port 12345
+[07:21:02] [DEBUG] ('127.0.0.1', 49890) s'est connecté
+[07:21:05] [INFO] Stopping server
+[18:30:10] [DEBUG] ('127.0.0.1', 49890) s'est déconnecté
+[18:31:19] [INFO] MySQL database connected
+[18:31:19] [INFO] Starting server...
+[18:31:19] [INFO] Server started at port 12345
+[18:31:19] [DEBUG] ('127.0.0.1', 57550) s'est connecté
+[18:31:23] [DEBUG] ('127.0.0.1', 57550) s'est déconnecté
+[18:33:47] [DEBUG] ('127.0.0.1', 57566) s'est connecté
+[18:34:28] [DEBUG] ('127.0.0.1', 57566) s'est déconnecté
+[23:53:07] [INFO] MySQL database connected
+[23:53:07] [INFO] Starting server...
+[23:53:07] [ERROR] Server start failed. Maybe the selected port is already in use
+[23:53:24] [INFO] MySQL database connected
+[23:53:24] [ERROR] Connection to database failed
+[23:53:29] [INFO] MySQL database connected
+[23:53:29] [ERROR] Connection to database failed
+[23:53:55] [INFO] connectiong to MySQL database
+[23:53:55] [ERROR] Connection to database failed
+[23:54:02] [INFO] Connectiong to MySQL database
+[23:54:02] [ERROR] Connection to database failed
+[23:54:21] [INFO] Connectiong to MySQL database
+[23:54:21] [ERROR] Connection to database failed
+[23:54:40] [INFO] Connectiong to MySQL database
+[23:54:40] [INFO] Starting server...
+[23:54:40] [ERROR] Server start failed. Maybe the selected port is already in use
+[23:55:48] [INFO] Connecting to MySQL database
+[23:55:48] [DEBUG] MySQL database connected
+[23:55:48] [INFO] Starting server...
+[23:55:48] [ERROR] Server start failed. Maybe the selected port is already in use
+[23:55:56] [INFO] Connecting to MySQL database
+[23:55:56] [DEBUG] MySQL database connected
+[23:55:56] [INFO] Starting server...
+[23:55:56] [ERROR] Server start failed. Maybe the selected port is already in use
+[23:55:57] [INFO] Connecting to MySQL database
+[23:55:58] [DEBUG] MySQL database connected
+[23:55:58] [INFO] Starting server...
+[23:55:58] [ERROR] Server start failed. Maybe the selected port is already in use
+[23:56:13] [INFO] Connecting to MySQL database
+[23:56:13] [DEBUG] MySQL database connected
+[23:56:13] [INFO] Starting server...
+[23:56:14] [ERROR] Server start failed. Maybe the selected port is already in use
+[23:56:25] [INFO] Connecting to MySQL database
+[23:56:25] [DEBUG] MySQL database connected
+[23:56:25] [INFO] Starting server...
+[23:56:25] [ERROR] Server start failed. Maybe the selected port is already in use
+[23:56:41] [INFO] Connecting to MySQL database
+[23:56:41] [DEBUG] MySQL database connected
+[23:56:41] [INFO] Starting server...
+[23:56:41] [INFO] Server started at port 12346
+[23:57:02] [INFO] Stopping server
+[23:57:58] [INFO] Connecting to MySQL database
+[23:57:58] [DEBUG] MySQL database connected
+[23:57:58] [INFO] Starting server...
+[23:57:58] [INFO] Server started at port 12346
+[23:58:28] [INFO] Stopping server
+[23:58:31] [INFO] Connecting to MySQL database
+[23:58:31] [DEBUG] MySQL database connected
+[23:58:31] [INFO] Starting server...
+[23:58:31] [INFO] Server started at port 12345
+[23:58:32] [DEBUG] ('127.0.0.1', 61930) s'est connecté

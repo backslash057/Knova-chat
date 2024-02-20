@@ -1,0 +1,53 @@
+**commandes du serveur**
+/list               liste de tout les utilisateurs
+/list online        liste des utilisateurs en ligne
+/stop               deconnecte proprement tout les utilsateurs
+/ban  [id]          bannir un utilisateur
+/kill [id]          deconnecter automatiquement un utilisateur s'il est connecté
+/reload             met les connexions en attente et les recupere apres la reconnexion
+
+**message sserveur**
+AUTHRESPONSE
+REQUEST
+KILL
+MESSAGE                 message chargé
+NOTIFICATION
+POPUP                   affiche une popup a l'utilisateur s'il est connecté
+
+**message client**
+AUTH
+MESSAGE
+
+
+
+
+serveur:
+    au lancement on charge la base de données
+
+client:
+    au lancement il envoie automatiquement des informations d'authentification au serveur
+    quand le serveur recois les informations il doit  verifier si l'utilisateur est dans la base de données. si c'est le cas il r 
+
+
+
+types de messages!
+    auth: authentification
+    signal: 
+        - confirmation de reception
+        - confirmation de lecture
+    text: discussion
+    #image: fichier
+
+
+fonction d'authentification
+on parcour la base dde donnée a la recherche de l'id d
+
+
+
+RECHERCHES
+comment recuperer la taille d'un caractere en utilisant pillow
+les differents types de fenetres tkinter; Tk(), Toplevel(), ?
+
+comment recuperer le bbox d'un widget
+comment recuperer la taille d'un rec
+comment supprimer tout les elements d'un canvas

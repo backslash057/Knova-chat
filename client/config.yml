@@ -1,0 +1,229 @@
+sidebar:
+  version: "Version 2.1.0 x64"
+  .: 
+    light: "#ffffff"
+    dark: "#17212B"
+  border:
+    light: "#f1f1f1"
+    dark: "#0A0F13"
+  close:
+    light: "#ffffff"
+    dark: "#17212B"
+  profilebox:
+    .: 
+      light: "#ffffff"
+      dark: "#17212B"
+    profile: 
+      light: "#ffffff"
+      dark: "#17212B"
+    plabels:
+      .: 
+        light: "#ffffff"
+        dark: "#17212B"
+      nick:
+        bg: 
+          light: "#ffffff"
+          dark: "#17212B"
+        fg:
+          light: "#000000"
+          dark: "#ffffff"
+      id: 
+        bg: 
+          light: "#ffffff"
+          dark: "#17212B"
+        fg: 
+          light: "#000000"
+          dark: "#ffffff"
+  separator: 
+    light: "#f1f1f1"
+    dark: "#101921"
+  sbarbtn:
+    normal:
+      .: 
+        light: "#ffffff"
+        dark: "#17212B"
+      icon:
+        light: "#ffffff"
+        dark: "#17212B"
+      lbl: 
+        bg:
+          light: "#ffffff"
+          dark: "#17212B"
+        fg:
+          light: "#000000"
+          dark: "#ffffff"
+      btn:
+        .:
+          light: "#ffffff"
+          dark: "#17212B"
+        bg:
+          light: "#8A8A8A"
+          dark: "#5288C1"
+        ball:
+          bg:
+            light: "#ffffff"
+            dark: "#17212B"
+          outline:
+              light: "#8A8A8A"
+              dark: "#5288C1"
+
+
+    hovered:
+      .: 
+        light: "#f1f1f1"
+        dark: "#232E3C"
+      icon: 
+        light: "#f1f1f1"
+        dark: "#232E3C"
+      lbl:
+        bg: 
+          light: "#f1f1f1"
+          dark: "#232E3C"
+        fg:
+          light: "#000000"
+          dark: "#ffffff"
+      btn:
+        .:
+          light: "#f1f1f1"
+          dark: "#232E3C"
+  infobox:
+    .:
+      light: "#ffffff"
+      dark: "#17212B"
+    appname:
+      bg:
+        light: "#ffffff"
+        dark: "#17212B"
+      fg:
+        light: "#999999"
+        dark: "#999999"
+    appversion:
+      bg:
+        light: "#ffffff"
+        dark: "#17212B"
+      fg:
+        light: "#999999"
+        dark: "#999999"
+chatmenu:
+  .:
+    light: "#ffffff"
+    dark: "#17212B"
+  searchbar:
+    .:
+      light: "#ffffff"
+      dark: "#17212B"
+    entry:
+      bg:
+        light: "#f1f1f1"
+        dark: "#242F3D"
+      fg:
+        light: "#000000"
+        dark: "#ffffff"
+  chat:
+    normal:
+      .:
+        light: "#ffffff"
+        dark: "#17212B"
+      logo:
+        light: "#ffffff"
+        dark: "#17212B"
+      container:
+        .:
+          light: "#ffffff"
+          dark: "#17212B"
+        name:
+            bg:
+              light: "#ffffff"
+              dark: "#17212B"
+            fg:
+              light: "#000000"
+              dark: "#ffffff"
+        text:
+          bg:
+            light: "#ffffff"
+            dark: "#18212B"
+          fg:
+            light: "#000000"
+            dark: "#ffffff"
+
+    hovered:
+      .:
+        light: "#f1f1f1"
+        dark: "#232E3C"
+      logo:
+        light: "#f1f1f1"
+        dark: "#232E3C"
+      container:
+        .:
+          light: "#f1f1f1"
+          dark: "#232E3C"
+        name:
+            bg:
+              light: "#F1f1f1"
+              dark: "#232E3C"
+            fg:
+              light: "#000000"
+              dark: "#ffffff"
+        text:
+            bg:
+              light: "#f1f1f1"
+              dark: "#232E3C"
+            fg:
+              light: "#000000"
+              dark: "#ffffff"
+
+titlebar:
+  .:
+    light: "#ffffff"
+    dark: "#17212B" 
+  border:
+    light: "#e7e7e7"
+    dark: "#101921"
+  container:
+    .:
+      light: "#ffffff"
+      dark: "#17212B"
+    chattitle:
+      bg:
+        light: "#ffffff"
+        dark: "#17212B"
+      fg:
+        light: "#000000"
+        dark: "#ffffff"
+    status:
+      bg:
+        light: "#ffffff"
+        dark: "#17212B"
+      fg:
+        light: "#ABABAB"
+        dark: "#708488"
+  dots:
+    light: "#ffffff"
+    dark: "#17212B"
+chatzone:
+  .:
+    light: "#70A789"
+    dark: "#0E1621"
+msgbar:
+  .:
+    light: "#ffffff"
+    dark: "#17212B"
+  border:
+    light: "#e7e7e7"
+    dark: "#0A121B"
+  pin:
+    light: "#ffffff"
+    dark: "#17212B"
+  entry:
+    bg:
+      light: "#ffffff"
+      dark: "#17212B"
+    fg:
+      light: "#000000"
+      dark: "#ffffff"
+  emoji:
+    light: "#ffffff"
+    dark: "#17212B"
+  microphone:
+    light: "#ffffff"
+    dark: "#17212B"
