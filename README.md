@@ -1,7 +1,7 @@
 # Knova-chat
 
 <div aligne="center">
-	<img serc="github.com/Backslash0001/Knova-chat/knova-logo.png" width=300>
+	<img src="github.com/Backslash0001/Knova-chat/knova-logo.png" width=300>
 </div>
 
 Knova chat is a chat application based on network socket and maded using MVC (Model-view-Controller) architecture for both client and server side.
