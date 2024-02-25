@@ -5,12 +5,21 @@ import time
 from models.exeptions import AuthException
 
 class Network():
-	def __init__(self, host, port):
-		self.host = host 
-		self.port = port
-		self.conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	def init(self, netconf):
+		try:
+			self.host = netconf['host']
+			self.port = netconf['port']
+
+			self.conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		except KeyError:
+			print("Could not parse network config file. The app could not connect to server :(")
+			self.conn = None
+
+		
 
 	def connect(self):
+		if not self.conn: return
+
 		try:
 			self.conn.connect((self.host, self.port))
 		except (ConnectionAbortedError, ConnectionRefusedError, ) as e:
@@ -48,6 +57,7 @@ class Network():
 			print("Network disconnected")
 			self.connect()
 
+
 def send_auth_datas(username, nickname, password):
 	datas = {}
 	datas["body"] = {
@@ -64,3 +74,5 @@ def send_auth_datas(username, nickname, password):
 	packet = json.dumps(datas)
 	network.send(packet)
 
+
+network = Network()

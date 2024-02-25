@@ -2,7 +2,7 @@ from utils.config import load_config
 
 from view.gui import gui
 
-from models import network
+from controllers.networkcontroller import network
 
 
 
@@ -20,7 +20,7 @@ except Exception:
 	print(f"configuration \"config.yml\" invalide.")
 
 
-network.init()
+network.init(netconf)
 
 network_thread = threading.Thread(target=network.connect, daemon=True)
 network_thread.start()

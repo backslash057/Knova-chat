@@ -31,6 +31,7 @@ class GUI(tk.Tk):
 	def init(self, config, mode="light"):
 		self.configs = config
 		self.mode = mode
+		
 		self.set_window()
 		self.add_widgets()
 
@@ -44,40 +45,42 @@ class GUI(tk.Tk):
 
 
 	def add_widgets(self):
-		authcontainer = tk.Frame(self, bg="#fff")
+		auth_container = tk.Frame(self, bg="#fff")
 
-		self.auth = Authentify(authcontainer)
+		self.auth = Authentify(auth_container)
 		self.auth.pack(expand=True)
 
-		container = tk.Canvas(self, highlightthickness=0)
 
-		self.groupbar = Groupbar(container, togglebar=self.toggle_sidebar)
+		app_container = tk.Frame(self, highlightthickness=0)
+
+		self.groupbar = Groupbar(app_container, togglebar=self.toggle_sidebar)
 		self.groupbar.pack(side="left", fill="y")
 
-		self.chatmenu = Chatmenu(container, self.configs['chatmenu'], self.mode)
+		self.chatmenu = Chatmenu(app_container, self.configs['chatmenu'], self.mode)
 		self.chatmenu.pack(side="left", fill="y")
 
-		zone = tk.Frame(container, highlightthickness=0)
-		zone.pack(side="left", expand=True, fill="both")
+		msg_zone = tk.Frame(app_container, highlightthickness=0)
+		msg_zone.pack(side="left", expand=True, fill="both")
 
-		self.titlebar = Titlebar(zone, configs=self.configs['titlebar'], mode=self.mode)
+		self.titlebar = Titlebar(msg_zone, configs=self.configs['titlebar'], mode=self.mode)
 		self.titlebar.pack(fill="x")
 
-		self.chat = Chatzone(zone, configs=self.configs['chatzone'], mode=self.mode)
+		self.chat = Chatzone(msg_zone, configs=self.configs['chatzone'], mode=self.mode)
 		self.chat.pack(expand=True, fill="both")
 		self.chat.bind("<<config>>", lambda: print("modifié"))
 
-		self.msgbar = Messagebar(zone, configs=self.configs['msgbar'], mode=self.mode)
+		self.msgbar = Messagebar(msg_zone, configs=self.configs['msgbar'], mode=self.mode)
 		self.msgbar.pack(fill="x")
 		
+
 		self.sidebar = Sidebar(self, self.configs['sidebar'], self.mode)
 		self.sidebar.toggle_btn.oncommand = self.toggle_dark
 		self.sidebar.toggle_btn.offcommand = self.toggle_light
 
 		
-		#container.place(relheight=1.0, relwidth=1.0)
+		#app_container.place(relheight=1.0, relwidth=1.0)
 		#self.sidebar.place_()
-		authcontainer.pack(fill="both", expand=True)
+		auth_container.pack(fill="both", expand=True)
 
 	def toggle_dark(self):
 		self.mode = "dark"

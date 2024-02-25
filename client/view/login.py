@@ -8,17 +8,13 @@ from controllers import networkcontroller
 from controllers import authcontroller
 
 from . import utils
-
-
-# third party libraries
-import os
-import os.path
-from PIL import Image, ImageTk
+from .login_widgets import KInputbox, KEntry, KSubmit, Errorframe
 
 
 class Authentify(tk.Frame):
 	def __init__(self, master, *args, **kwargs):
 		super().__init__(master, *args, **kwargs)
+		
 		self.config(bg="#fff")
 
 		self.add_widgets()
@@ -31,283 +27,101 @@ class Authentify(tk.Frame):
 		self.logo.pack(expand=True)
 		self.logo.create_image(w//2, h//2, image=logo_icon)
 		
-		self.errorbox = Errorframe(self, self.logo)
+		self.errorbox = Errorframe(self)
 		#self.errorbox.pack(fill="x", after=self.logo, pady=(15, 0))
 
 		self.main = ctk.CTkFrame(self, fg_color="#F6F8FA", bg_color="#ffffff")
 		self.main.configure(border_color="#D8DEE4", border_width=1)
 		self.main.pack(pady=(20, 0), fill="x", expand=True)
 
-		font=("Calibri", 12)
-		self.username = KInput(self.main, text="User id", textfont=font)
-		self.username.pack(anchor="w", fill="x", padx=30, pady=(22, 0))
 
-		self.nickname = KInput(self.main, text="Nickname", textfont=font)
-		self.nickname.pack(anchor="w", fill="x", padx=30, pady=(22, 0))
+		self.userid_entry = KInputbox(self.main, text="User id")
+		self.userid_entry.pack(anchor="w", fill="x", padx=30, pady=(22, 0))
 
-		self.password = KInput(self.main, text="Password", textfont=font, show="•")
-		self.password.pack(anchor="w", fill="x", padx=30, pady=(22, 0))
+		self.username_entry = KInputbox(self.main, text="Nickname")
+		self.username_entry.pack(anchor="w", fill="x", padx=30, pady=(22, 0))
 
-
-		validation = tk.Frame(self.main, bg="#F6F8FA")
-		validation.pack(fill="x", pady=20, padx=30)
-
-		targets = [self.username, self.nickname, self.password]
-		self.submit = KSubmit(validation, handler=self.error_handler, targets=targets, errorbox=self.errorbox)
-		self.submit.pack(side="right")
-
-		font = tkFont.Font(family="Calibry", size=10, underline=True)
-		self.auth_mode = tk.Label(validation, text="Log in", font=font, bg="#F6F8FA", fg="#46A2D9", cursor="hand2")
-		self.auth_mode.pack(side="right", padx=(0, 6), anchor="s")
-		self.auth_mode.bind("<Button-1>", lambda *args: self.set_login())
-
-		self.mode_label = tk.Label(validation, text="Already registered? ", font=("Calibri", 9), bg="#F6F8FA", fg="#888888")
-		self.mode_label.pack(side="right", anchor="s")
-
-	def set_login(self):
-		if self.submit.loader.running: return
-
-		self.errorbox.pack_forget()
-
-		self.username.clear()
-		self.nickname.clear()
-		self.nickname.pack_forget()
-		self.password.clear()
-		self.auth_mode.config(text="Register")
-		self.mode_label.config(text="No account? ")
-		self.submit.label.config(text="Login")
-		self.auth_mode.bind("<Button-1>", lambda *args: self.set_register())
-
-	def set_register(self):
-		if self.submit.loader.running: return
-
-		self.errorbox.pack_forget()
-
-		self.username.clear()
-		self.nickname.clear()
-		self.nickname.pack(anchor="w", after=self.username, fill="x", padx=30, pady=(22, 0))
-		self.password.clear()
-		self.auth_mode.config(text="Log in")
-		self.mode_label.config(text="Already registered? ")
-		self.submit.label.config(text="Register")
-		self.auth_mode.bind("<Button-1>", lambda *args: self.set_login())
-
-	def error_handler(self, error):
-		self.errorbox.pack(fill="x", after=self.logo, pady=(15, 0))
+		self.password_entry = KInputbox(self.main, text="Password", show="•")
+		self.password_entry.pack(anchor="w", fill="x", padx=30, pady=(22, 0))
 
 
-class KSubmit(ctk.CTkFrame):
-	def __init__(self, master, handler, targets, errorbox, command=None):
-		super().__init__(master, cursor="hand2")
+		validation_row = tk.Frame(self.main, bg="#F6F8FA")
+		validation_row.pack(fill="x", pady=20, padx=30)
 
-		self.errorbox = errorbox
+		self.auth_mode_label = tk.Label(validation_row, text="Already registered? ", bg="#F6F7F8")
+		self.auth_mode_label.pack(side="right", anchor="s")
 
-		self.normal_color = "#3CB6B6"
-		self.blocked_color = "#148e8e"
-		self.status = "normal"
-		self.targets = targets
+		font = tkFont.Font(family="Calibri", size=10, underline=True)
+		self.auth_mode_link = tk.Label(validation_row, text="Log in", font=font, bg="#F6F8FA", fg="#46A2D9", cursor="hand2")
+		self.auth_mode_link.pack(side="right", padx=(0, 6), anchor="s", before=self.auth_mode_label)
+		self.auth_mode_link.bind("<Button-1>", lambda *args: self.set_login())
 
-		self.handler = handler
+		self.submit_btn = KSubmit(validation_row)
+		self.submit_btn.pack(side="right", before=self.auth_mode_link)
 
-		self.container = tk.Frame(self)
-		self.container.pack(fill="both", padx=25, pady=8)
+		self.submit_btn.bind("<Button-1>", lambda *args: self.send_auth_request())
+		self.submit_btn.container.bind("<Button-1>", lambda *args: self.send_auth_request())
+		self.submit_btn.label.bind("<Button-1>", lambda *args: self.send_auth_request())
 
-		self.label = tk.Label(self.container, text="Register", font=("Calibri", 14), fg="#ffffff")
-		self.label.pack(side="left", expand=True)
-
-		self.loader = Loader(self.container, path="loader", width=40, height=40)
-
-		self.bind("<Button-1>", lambda *args: self.start_loader())
-		self.container.bind("<Button-1>", lambda *args: self.start_loader())
-		self.label.bind("<Button-1>", lambda *args: self.start_loader())
-
-		self.update_color()
 	
-	def start_loader(self):
-		for target in self.targets:
-			target.disable()
+	def send_auth_request(self):
+		def stop():
+			self.stop_loader()
+			self.errorbox.display(callback)
 
-		self.container.unbind("<Button-1>")
-		self.label.unbind("<Button-1>")
+		self.submit_btn.start_loader()
 
-		self.loader.pack(side="left", padx=(5, 0), expand=True)
-		self.loader.start()
+		userid = userid_entry.entry.text.get()
+		username = username_entry.entry.text.get()
+		password = password_entry.entry.text.get()
+
+		callback = auth_controller.validate(userid, username, password)
 		
-
-		def deactivate():
-			if self.loader.running:
-				self.stop_loader()
-				self.errorbox.display("Network Error. Try later")
-
-
-		self.after(8000, deactivate)
-		self.errorbox.pack_forget()
-		self.update_color("blocked")
-
-		self.validate_entries()
-
-	def stop_loader(self):
-		for target in self.targets:
-			target.enable()
-
-		self.bind("<Button-1>", lambda *args: self.start_loader())
-		self.container.bind("<Button-1>", lambda *args: self.start_loader())
-		self.label.bind("<Button-1>", lambda *args: self.start_loader())
-
-		self.loader.pack_forget()
-		self.loader.stop()
-		self.update_color("normal")
-	
-	def update_color(self, state=None):
-		if state: self.status = state 
-
-		color = self.normal_color if self.status=="normal" else self.blocked_color
-
-		self.configure(fg_color=color)
-		self.container.config(bg=color)
-		self.label.configure(bg=color)
-		self.loader.configure(bg=color)
-
-
-	def validate_entries(self):
-		username = self.targets[0].entry.text.get()
-		callback = authcontroller.validate_username(username)
 		if callback:
-			def stop():
-				self.stop_loader()
-				self.errorbox.display(callback)
 			self.after(100, stop)
 			return
 
-		nickname = self.targets[1].entry.text.get()
-		if self.targets[1].entry.entry.winfo_viewable():
-			callback = authcontroller.validate_nickname(nickname)
-			if callback:
-				def stop():
-					self.stop_loader()
-					self.errorbox.display(callback)
-				self.after(100, stop)
-				return
+		print("Envoi de", userid, username, password)
 
-		password = self.targets[2].entry.text.get()
-		callback = authcontroller.validate_password(password)
-		if callback:
-			def stop():
-				self.stop_loader()
-				self.errorbox.display(callback)
-			self.after(200, stop)
-			return
+	
+	
+	def set_login(self):
+		if self.submit_btn.loader.running: return
 
+		self.errorbox.pack_forget()
 
-		if not self.targets[1].entry.entry.winfo_viewable(): nickname=None
+		self.userid_entry.clear()
+		self.username_entry.clear()
+		self.username_entry.pack_forget()
+		self.password_entry.clear()
 
-		try:
-			networkcontroller.send_auth_datas(username, nickname, password)
-		except OSError as e:
-			print(e)
+		self.auth_mode_label.config(text="No account? ")
+		self.auth_mode_link.config(text="Register")
 
+		self.submit_btn.label.config(text="Login")
 
+		self.auth_mode_link.unbind("<Button-1>")
+		self.auth_mode_link.bind("<Button-1>", lambda *args: self.set_register())
 
-class KInput(tk.Frame):
-	def __init__(self, master, text, textfont, show=None):
-		super().__init__(master, bg=master.cget("fg_color"))
+	def set_register(self):
+		if self.submit_btn.loader.running: return
 
-		label = tk.Label(self, text=text, fg="#888888", bg="#F6F8FA", font=textfont)
-		label.pack(anchor="w")
+		self.errorbox.pack_forget()
 
-		self.entry = KEntry(self, show=show)
-		self.entry.pack(anchor="w", fill="x", pady=(5, 0))
+		self.userid_entry.clear()
+		self.username_entry.clear()
+		self.username_entry.pack(anchor="w", after=self.userid_entry, fill="x", padx=30, pady=(22, 0))
+		self.password_entry.clear()
+		self.auth_mode_label.config(text="Already registered? ")
+		self.auth_mode_link.config(text="Log in")
 
-	def clear(self):
-		self.entry.clear()
+		self.submit_btn.label.config(text="Register")
 
-	def enable(self):
-		self.entry.entry.config(state="normal")
+		self.auth_mode_link.unbind("<Button-1>")
+		self.auth_mode_link.bind("<Button-1>", lambda *args: self.set_login())
 
-	def disable(self):
-		self.entry.entry.config(state="readonly")
-
-class KEntry(ctk.CTkFrame):
-	def __init__(self, master, show=None):
-		super().__init__(master, width=280, height=35, fg_color="#ffffff", border_color="#D0D7DE", border_width=1)
-		self.pack_propagate(False)
-		self.text = tk.StringVar()
-
-		font=tkFont.Font(family="Calibri", size=12)
-		self.entry = tk.Entry(self, relief="flat", fg="#1F2328", readonlybackground="#ffffff", font=font)
-		self.entry.config(textvariable=self.text)
-		self.entry.pack(fill="x", expand=True, padx=10)
-		if show: self.entry.config(show=show)
-
-		self.bind("<Button-1>", lambda *args: self.entry.focus_set())
-		self.entry.bind("<FocusIn>", lambda *args: self.set_active())
-		self.entry.bind("<FocusOut>", lambda *args: self.set_normal())
-
-	def clear(self):
-		self.entry.delete("0", "end")
-
-	def set_active(self):
-		self.configure(border_color="#0969DA", border_width=1)
-
-	def set_normal(self):
-		self.configure(border_color="#D0D7DE", border_width=1)
+	def display_error(self, error):
+		self.errorbox.display(error)
+		self.errorbox.pack(fill="x", after=self.logo, pady=(15, 0))
 
 
-
-class Errorframe(ctk.CTkFrame):
-	def __init__(self, master, before):
-		super().__init__(master)
-		self.before = before
-		self.configure(height=40, fg_color="#FFEBE9", bg_color="#ffffff", border_color="#FFC1C0", border_width=1)
-
-		font = tkFont.Font(family="Calibri", size=14)
-		self.text = tk.Label(self, text="Message", bg="#FFEBE9", font=font)
-		self.text.config(fg="#6F2328")
-		self.text.pack(side="left", padx=20)
-		self.icon = tk.Canvas(self, bg="#FFEBE9", highlightthickness=0, width=40, height=40, cursor="hand2")
-		self.icon.pack(side="right", pady=12, padx=15)
-		self.icon_res = utils.load_image("close-error.png")
-		self.icon.create_image(20, 20, image=self.icon_res)
-
-		self.icon.bind("<Button-1>", lambda *args: self.pack_forget())
-
-	def display(self, message):
-		self.text.config(text=message)
-
-		self.pack(fill="x", pady=(15, 0), after=self.before)
-
-
-	def hide(self):
-		self.pack_forget()
-
-class Loader(tk.Canvas):
-    def __init__(self, master, path, width=40, height=40, bg="#ffffff"):
-        super().__init__(master, width=width, height=height, bg=bg, highlightthickness=0)
-
-        self.images = []
-        self.load_images(path)
-
-        self.frame_index = 0
-        self.running = False
-
-    def load_images(self, path):
-        imgs = utils.load_images("loader")
-
-        for img in imgs:
-            image = ImageTk.PhotoImage(img)
-            self.images.append(image)
-
-    def start(self):
-        self.running = True
-        self.animate()
-
-    def animate(self):
-        if self.running:
-            self.delete("all")
-            self.create_image(20, 20, image=self.images[self.frame_index])
-            self.frame_index = (self.frame_index + 1) % len(self.images)
-            self.after(45, self.animate)
-
-    def stop(self):
-        self.running = False
-        self.frame_index = 0

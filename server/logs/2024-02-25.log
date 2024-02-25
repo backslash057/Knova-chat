@@ -1,0 +1,8 @@
+[03:34:54] [INFO] Connecting to MySQL database
+[03:34:58] [ERROR] Connection to database failed
+[03:35:10] [INFO] Connecting to MySQL database
+[03:35:10] [DEBUG] MySQL database connected
+[03:35:10] [INFO] Starting server...
+[03:35:10] [INFO] Server started at port 12345
+[03:47:49] [DEBUG] ('127.0.0.1', 50141) connected
+[05:33:26] [DEBUG] ('127.0.0.1', 50141) disconnected
