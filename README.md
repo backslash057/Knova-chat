@@ -2,8 +2,8 @@
 
 <br />
 <div align="center">
-  <img src="knova-logo.Png" alt="Logo" width="100" height="100">
-  <h1 align="center">Tkinter-Toolkit</h1>
+  <img src="knova-logo.png" alt="Logo" width="100" height="100">
+  <h1 align="center">Knova logo</h1>
 </div>
 
 Knova chat is a chat application based on network socket and maded using MVC (Model-view-Controller) architecture for both client and server side.
