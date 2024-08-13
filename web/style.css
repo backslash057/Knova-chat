@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --light-background: #ffffff;
+    --dark-background: #212121;
+
+    --dark-sidebar-color: #17212b;
+    --light-sidebar-color: #ffffff;
+
+    --dark-searchbar-bg-color: #242f3d;
+    --light-searchbar-bg-color: #f4f4f5;
+
+    --dark-chat-selected-bd-color: #2b5278;
+
+    --dark-chat-title-color: #17212b;
+    --light-chat-title-bgcolor: #fff;
+
+    --dark-chat-bg-color: #0e1621;
+    --light-chat-bg-color: #99BA92;
+
+    --dark-message-bg-color: #182533;
+    --light-message-bg-color: #ffffff;
+
+    --dark-local-message-bg-color: #182533;
+    --light-local-message-bg-color: #eeffde;
+}
+
+body {
+    background-color: var(--light-background);
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.sidebar {
+    height: 100%;
+    width: 35%;
+    background-color: var(--light-sidebar-color);
+    background-color: #ffffff;
+}
+
+.searchbar{
+    width: 100%;
+    padding: 2.5%;
+}
+
+.search-input {
+    background-color: var(--light-searchbar-bg-color);
+    border: none;
+    padding: 2%;
+    width: 80%;
+}
+
+.search-input {
+    outline: none;
+}
+
+.chat {
+    flex-grow: 1;
+    height: 100%;
+    background: var(--light-chat-bg-color);
+}
