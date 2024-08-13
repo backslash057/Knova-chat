@@ -38,3 +38,4 @@ def write(content, logtype=logtypes.DEBUG):
     print(log)
     logfile.close()
 
+
