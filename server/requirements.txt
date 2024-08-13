@@ -1,2 +1,0 @@
-mysql-connector-python==8.2.0
-colorist==1.7.0
