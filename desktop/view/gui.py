@@ -19,8 +19,10 @@ from controllers.networkcontroller import network
 
 
 # activating DPI awareness to prevent blurred widgets
-from ctypes import windll
-windll.shcore.SetProcessDpiAwareness(1)
+import sys
+if sys.platform == "win32":
+	from ctypes import windll
+	windll.shcore.SetProcessDpiAwareness(1)
 
 # main GUI App
 class GUI(tk.Tk):
