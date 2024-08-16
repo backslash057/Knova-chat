@@ -54,18 +54,19 @@ body {
 
 .riple-container {
     height: 100%;
-    height: 100%;
-    width: 15%;
+    width: auto;
     position: relative;
     display: flex;
     justify-content: center;
+    border-radius: 50%;
+    background-color: red;
 }
 
 .riple {
-    width: 60%;
-    height: 4px;
-    background-color: #888;
-    border-radius: 2px;
+    width: 50%;
+    height: 2px;
+    background-color: #707579;
+    border-radius: 1px;
     position: absolute;
     top: calc(50% - 2px);
 }
@@ -73,21 +74,21 @@ body {
 .riple::before {
     content: " ";
     width: 100%;
-    height: 4px;
-    background-color: #888;
-    border-radius: 2px;
+    height: 2px;
+    background-color: #707579;
+    border-radius: 1px;
     position: absolute;
-    bottom: 10px;
+    bottom: 7px;
 }
 
 .riple::after {
     content: " ";
     width: 100%;
-    height: 4px;
-    background-color: #000;
-    border-radius: 2px;
+    height: 2px;
+    background-color: #707579;
+    border-radius: 1px;
     position: absolute;
-    top: 10px;
+    top: 7px;
 }
 
 .search-input {
