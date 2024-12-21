@@ -1,0 +1,1 @@
+ /home/backslash057/Desktop/Knova-chat/mobile/.dart_tool/flutter_build/a6819c3aea3940ce6173c0fd994c1280/native_assets.yaml: 
