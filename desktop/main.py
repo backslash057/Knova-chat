@@ -1,5 +1,9 @@
 from view import gui
 
 
-try: gui.mainloop()
-except KeyboardInterrupt: pass
+
+try:
+	app = gui.GUI()
+	app.mainloop()
+except KeyboardInterrupt:
+	pass

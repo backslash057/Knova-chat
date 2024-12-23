@@ -1,9 +1,10 @@
 import customtkinter as ctk
 import tkinter as tk
 
+from . import auth
 
-from .login import login
 
+# amelioratiing process DPI for Windows
 import sys
 if sys.platform == 'win32':
     from ctypes import windll
@@ -13,10 +14,12 @@ if sys.platform == 'win32':
 class GUI(tk.Tk):
     def __init__(self):
         super().__init__()
+
+        self.set_window()
         
-        auth_page = tk.Frame(self)
+        login_page = auth.LoginPage(self)
 
-        auth_page.place(0, 0, relwidth=1.0, relheight=1.0)
+        login_page.pack()
 
-
-gui = Gui()
+    def set_window(self):
+        self.minsize(500, 500)
