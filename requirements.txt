@@ -1,4 +1,5 @@
 Pillow>=10.0.1
 sockets>=1.0.0
 colorist>=1.7.0
+customtkinter>=5.2.2
 mysql-connector-python>=8.2.0
