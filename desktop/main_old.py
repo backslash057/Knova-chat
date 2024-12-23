@@ -5,7 +5,6 @@ from view.gui import gui
 from controllers.networkcontroller import network
 
 
-
 import threading
 
 try:
